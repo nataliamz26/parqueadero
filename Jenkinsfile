@@ -81,9 +81,16 @@ pipeline{
 				}
 			}
 		
-		
-
 		}
+		
+		stage('Build') {
+			step{
+				echo "------------->Build<-------------------"
+				//Construir sin tarea test que se ejecutó previamente
+				sh 'gradle --b ./build.gradle build -x test'
+			}
+		}
+		
 		post {
 			failure {
 				mail(to: 'natalia.munoz@ceiba.com.co',
@@ -92,4 +99,9 @@ pipeline{
 			}
 		}	
 			
+			
+		Success {
+			echo  'This will run only if successful'
+			junit '**/build/test-results/test/*.xml'
+		}	
 }

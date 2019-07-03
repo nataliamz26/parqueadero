@@ -5,9 +5,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class ManejadorConsultarParqueadero {
 
-	public int consultarCantidadCarros() {
-		// TODO Auto-generated method stub
+	public int consultarCantidadCarro() {
+	
 		return 0;
 	}
 
+	public int consultarCantidadMoto() {
+		
+		return 0;
+	}
 }
