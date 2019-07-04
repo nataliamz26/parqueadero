@@ -5,13 +5,18 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCilindrajeIncorrecto;
+import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCilindrajeRequerido;
+import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionPlaca;
+import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculo;
+import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculoIncorrecto;
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
 import co.com.ceiba.parqueadero.parqueadero.infraestructura.entidad.EntidadVehiculo;
 
 @Component 
 public class MapeoVehiculo {
 
-	public Vehiculo convertirADominio(EntidadVehiculo entidadVehiculo) {
+	public Vehiculo convertirADominio(EntidadVehiculo entidadVehiculo) throws ExcepcionPlaca, ExcepcionTipoVehiculo, ExcepcionCilindrajeIncorrecto, ExcepcionTipoVehiculoIncorrecto, ExcepcionCilindrajeRequerido {
 		Vehiculo vehiculo;
 		
 		if(entidadVehiculo != null) {

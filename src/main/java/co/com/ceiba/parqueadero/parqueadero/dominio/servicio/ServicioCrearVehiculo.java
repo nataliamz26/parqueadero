@@ -4,9 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCupoParqueaderoCarro;
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCupoParqueaderoMoto;
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionPlacaConLetraA;
@@ -14,7 +11,7 @@ import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionVehiculoE
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.repositorio.RepositorioVehiculo;
 
-@Service
+
 public class ServicioCrearVehiculo {
 	
 	private static final String EL_VEHICULO_NO_PUEDE_INGRESAR = "No está autorizado a ingresar solo puede ingresar los Domingos y Lunes";
@@ -26,10 +23,10 @@ public class ServicioCrearVehiculo {
 	private static final int CAPACIDAD_MAXIMA_CARRO = 20;
 	private static final int CAPACIDAD_MAXIMA_MOTO = 10;
 
-	
+	//Inyección de dependencias por constructor
 	private RepositorioVehiculo repositorioVehiculo;
 	
-	@Autowired
+
 	public ServicioCrearVehiculo(RepositorioVehiculo repositorioVehiculo) {
 		this.repositorioVehiculo = repositorioVehiculo;
 	}

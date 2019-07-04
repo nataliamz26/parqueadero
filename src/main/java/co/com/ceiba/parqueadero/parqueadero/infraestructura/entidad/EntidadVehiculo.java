@@ -38,15 +38,4 @@ public class EntidadVehiculo {
 	private long valor;
 	
 	
-	public String getTipoVehiculo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	
-
-
-
-
 }
