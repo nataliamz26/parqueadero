@@ -1,10 +1,11 @@
-package co.com.ceiba.parqueadero.parqueadero.infraestructura.repositorio;
+package co.com.ceiba.parqueadero.parqueadero.infraestructura.adaptador.repositorio;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import co.com.ceiba.parqueadero.parqueadero.infraestructura.entidad.EntidadVehiculo;
+
+import co.com.ceiba.parqueadero.parqueadero.infraestructura.modelo.EntidadVehiculo;
 
 
 

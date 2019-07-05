@@ -11,7 +11,7 @@ import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionPlaca;
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculoIncorrecto;
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
-import co.com.ceiba.parqueadero.parqueadero.infraestructura.entidad.EntidadVehiculo;
+import co.com.ceiba.parqueadero.parqueadero.infraestructura.modelo.EntidadVehiculo;
 
 @Component 
 public class MapeoVehiculo {

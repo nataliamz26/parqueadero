@@ -1,4 +1,4 @@
-package co.com.ceiba.parqueadero.parqueadero.infraestructura.adaptador;
+package co.com.ceiba.parqueadero.parqueadero.infraestructura.adaptador.repositorio;
 
 import java.util.List;
 
@@ -6,9 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.repositorio.RepositorioVehiculo;
-import co.com.ceiba.parqueadero.parqueadero.infraestructura.entidad.EntidadVehiculo;
 import co.com.ceiba.parqueadero.parqueadero.infraestructura.mapeo.MapeoVehiculo;
-import co.com.ceiba.parqueadero.parqueadero.infraestructura.repositorio.IRepositorioVehiculoJPA;
+import co.com.ceiba.parqueadero.parqueadero.infraestructura.modelo.EntidadVehiculo;
 
 @Repository
 public class RepositorioVehiculoEnMemoria implements RepositorioVehiculo {

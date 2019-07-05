@@ -1,10 +1,13 @@
 package co.com.ceiba.parqueadero.parqueadero.dominio.excepcion;
 
-public class ExcepcionTipoVehiculo extends Exception {
-	
+public class ExcepcionVehiculoNoExiste extends RuntimeException {
+
 	private static final long serialVersionUID = 1L;
 
-	public ExcepcionTipoVehiculo(String mensaje) {
+	public ExcepcionVehiculoNoExiste(String mensaje) {
 		super(mensaje);
+		
 	}
+
+	
 }

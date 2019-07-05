@@ -1,4 +1,4 @@
-package co.com.ceiba.parqueadero.parqueadero.infraestructura.entidad;
+package co.com.ceiba.parqueadero.parqueadero.infraestructura.modelo;
 
 import java.util.Date;
 
