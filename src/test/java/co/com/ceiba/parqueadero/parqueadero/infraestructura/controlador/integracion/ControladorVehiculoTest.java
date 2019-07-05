@@ -1,4 +1,4 @@
-package co.com.ceiba.parqueadero.parqueadero.dominio.servicio.integracion;
+package co.com.ceiba.parqueadero.parqueadero.infraestructura.controlador.integracion;
 
 import javax.swing.Spring;
 
