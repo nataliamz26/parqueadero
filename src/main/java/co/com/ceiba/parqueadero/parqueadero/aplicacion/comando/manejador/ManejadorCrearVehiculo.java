@@ -2,31 +2,29 @@ package co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.manejador;
 
 import org.springframework.stereotype.Component;
 
-import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.ComandoVehiculo;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCilindrajeIncorrecto;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCilindrajeRequerido;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCupoParqueaderoCarro;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCupoParqueaderoMoto;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionPlaca;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionPlacaConLetraA;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculo;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculoIncorrecto;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionVehiculoExiste;
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.ComandoManejadorResultado;
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.ComandoResultado;
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.generacion.GenerarTiquete;
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.mapeo.ComandoVehiculoMapeo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.servicio.ServicioCrearVehiculo;
 
 @Component
-public class ManejadorCrearVehiculo {
+public class ManejadorCrearVehiculo implements ComandoManejadorResultado<ComandoVehiculo, ComandoResultado<ComandoVehiculo>> {
 
 	 private final ServicioCrearVehiculo servicioCrearVehiculo;
+	 private final GenerarTiquete generarTiquete;
+	 private static final ComandoVehiculoMapeo mapeo = ComandoVehiculoMapeo.getInstance();
 
-	    public ManejadorCrearVehiculo(ServicioCrearVehiculo servicioCrearVehiculo){
-	        this.servicioCrearVehiculo = servicioCrearVehiculo;
+	    public ManejadorCrearVehiculo(GenerarTiquete generarTiquete, ServicioCrearVehiculo servicioCrearVehiculo){
+	        this.generarTiquete = generarTiquete;
+	    	this.servicioCrearVehiculo = servicioCrearVehiculo;
 	    }
 
-	    public  void registrarVehiculo(ComandoVehiculo comandoVehiculo) throws ExcepcionPlaca, ExcepcionCupoParqueaderoCarro, ExcepcionPlaca, ExcepcionTipoVehiculo, ExcepcionTipoVehiculoIncorrecto, ExcepcionCilindrajeRequerido, ExcepcionCilindrajeIncorrecto, ExcepcionPlacaConLetraA, ExcepcionVehiculoExiste{
-	        this.servicioCrearVehiculo.registrarVehiculo(new Vehiculo(comandoVehiculo.getId(), comandoVehiculo.getTipoVehiculo(), comandoVehiculo.getPlaca(), comandoVehiculo.getCilindraje(), comandoVehiculo.getFechaIngreso(), comandoVehiculo.getFechaSalida(), comandoVehiculo.getValor()));
+	    public ComandoResultado<ComandoVehiculo> exec(ComandoVehiculo comandoVehiculo) {
+	        Vehiculo vehiculo = this.generarTiquete.crear(comandoVehiculo);
+	        return new ComandoResultado<>(mapeo.convertirAComando(this.servicioCrearVehiculo.registroIngresoVehiculo(vehiculo)));
 	    }
-	
+
 	    
 }

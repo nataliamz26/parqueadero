@@ -1,6 +1,7 @@
 package co.com.ceiba.parqueadero.parqueadero.dominio.servicio;
 
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.stereotype.Component;
 
@@ -33,7 +34,7 @@ public class ServicioActualizarVehiculo {
 		Vehiculo vehiculo = validarRegistroVehiculo(placa);
 		vehiculo.setEstado(false);
 		vehiculo.setFechaSalida(Calendar.getInstance().getTime());
-		vehiculo.setprecio(calcularPrecio(vehiculo));
+		vehiculo.setPrecio(calcularPrecio(vehiculo));
 		this.repositorioVehiculo.registroSalidaVehiculo(vehiculo);
 		return vehiculo.getPrecio();
 		
@@ -49,8 +50,34 @@ public class ServicioActualizarVehiculo {
 	}
 	
 	private float calcularPrecio(Vehiculo vehiculo) {
-		
-		return 0;
+		float precio = 0;
+		long tiempoServicio = vehiculo.getFechaSalida().getTime() - vehiculo.getFechaIngreso().getTime();
+		long minutos = TimeUnit.MILLISECONDS.toMinutes(tiempoServicio);
+		tiempoServicio = TimeUnit.MILLISECONDS.toHours(tiempoServicio);
+		long dias = (tiempoServicio / 24);
+		long horasSobrantes = (tiempoServicio-(dias*24));
+		if(minutos%60 > 0) {
+			horasSobrantes++;
+		}
+		if(horasSobrantes >= 9) {
+			dias++;
+			horasSobrantes = 0;
+		}
+		if(horasSobrantes == 0 && dias == 0) {
+			horasSobrantes = 1;
+		}
+		if(vehiculo.getTipoVehiculo().equalsIgnoreCase(TIPO_VEHICULO_CARRO)) {
+			precio += dias * PRECIO_DIA_CARRO;
+			precio += horasSobrantes * PRECIO_HORA_CARRO;
+		}
+		if(vehiculo.getTipoVehiculo().equalsIgnoreCase(TIPO_VEHICULO_MOTO)) {
+			precio += dias * PRECIO_DIA_MOTO;
+			precio += horasSobrantes * PRECIO_HORA_MOTO;
+			if(Integer.parseInt(vehiculo.getCilindraje()) > 500) {
+				precio += PRECIO_ALTO_CILINDRAJE_MOTO;
+			}
+		}
+		return precio;
 	}
 	
 	

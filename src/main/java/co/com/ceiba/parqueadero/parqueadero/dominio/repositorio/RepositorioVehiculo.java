@@ -2,7 +2,9 @@ package co.com.ceiba.parqueadero.parqueadero.dominio.repositorio;
 
 import java.util.List;
 
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.consulta.ConsultarVehiculoActivo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
+
 
 public interface RepositorioVehiculo {
 	
@@ -12,11 +14,24 @@ public interface RepositorioVehiculo {
      * @param  Objeto que tiene la informacion del registro a crear
      */
 	public Vehiculo registroIngresoVehiculo(Vehiculo vehiculo);
+	
+	/**
+     * Permite listar los registros de vehiculos
+     *
+     * @return
+     */
+     public List<ConsultarVehiculoActivo> consultarVehiculo();
 
-      
+     /**
+ 	 * Método que registra la finalizaión de un ticket
+ 	 * 
+ 	 * @param ticket a finalizar
+ 	 * @return boolean con true si se finalizo correctamente y false si no
+ 	 */
+ 	public boolean registroSalidaVehiculo(Vehiculo vehiculo);
 
       /**
-      * Método que verifica si un vehiculo ya se encuentra en el parqueadero
+      * Método que valida si un vehiculo ya se encuentra en el parqueadero
       * 
       * @param placa de vehiculo a verificar
       * @return boolean con la respuesta si se encontro el vehiculo en el parqueadero
@@ -24,16 +39,16 @@ public interface RepositorioVehiculo {
 	public boolean validarSalidaVehiculo(String placa);
 	
 	
-	
-	public void registroSalidaVehiculo(Vehiculo vehiculo);
-	
-	
+		
+	/**
+	 * Método que retorna un vehiculo del parqueadero que aun no ha salido
+	 * 
+	 * @param placa de vehiculo a verificar
+	 * @return ticket con la respuesta si se encontro el vehiculo con ticket activo
+	 */
 	public Vehiculo retornoSalidaVehiculo(String placa);
-	
-	
-
-
-	 /**
+	 
+   	 /**
      * Metodo que permite contar la cantidad de carros en el paquedero
      *
      * @return int con la candidad de vehiculo
@@ -46,88 +61,6 @@ public interface RepositorioVehiculo {
      * @return int con la candidad de vehiculo
      */
 	public int contarMoto();
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-    /**
-     * Permite determinar si previamente se registro la placa
-     * @param Vehiculo
-     * @return si existe o no
-     */
-	
-	  boolean existe(Vehiculo vehiculo);
-
-	 /**
-     *Actualizar el registro un vehiculo
-     *
-     * @param  Objeto que tiene la informacion del registro a actualizar
-     */
-
-    void actualizar(Vehiculo vehiculo);
-
-    /**
-     * Permite listar los registros de vehiculos
-     *
-     * @return
-     */
-     List<Vehiculo> listar();
-
-    /**
-     * Permite contar la lista de vehiculos de un tipo
-     *
-     * @param String con el tipo de vehicluo
-     * @return int con la candida de vehiculo
-     */
-     int contarTipoVehiculo(String TipoVehiculo);
-
-    /**
-     * Permite buscar un vehiculo por su placa
-     *  @param  Placa del vehiculo
-     * @return Objeto de registro
-     */
-     Vehiculo findByPlaca(String placa);
-
-
-
-
-
-
-
-	
-
-
-
-	
-
-
-
-
-
-
-
-	
-
-
-
-
-     
-
-
-	
-
-	
-		
-	
-	
-   
+  
 	
 }

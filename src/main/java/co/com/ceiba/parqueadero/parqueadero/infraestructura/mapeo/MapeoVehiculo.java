@@ -1,59 +1,52 @@
 package co.com.ceiba.parqueadero.parqueadero.infraestructura.mapeo;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import org.springframework.stereotype.Component;
 
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCilindrajeIncorrecto;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCilindrajeRequerido;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionPlaca;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculo;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculoIncorrecto;
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
 import co.com.ceiba.parqueadero.parqueadero.infraestructura.modelo.EntidadVehiculo;
 
-@Component 
-public class MapeoVehiculo {
 
-	public Vehiculo convertirADominio(EntidadVehiculo entidadVehiculo) throws ExcepcionPlaca, ExcepcionTipoVehiculo, ExcepcionCilindrajeIncorrecto, ExcepcionTipoVehiculoIncorrecto, ExcepcionCilindrajeRequerido {
-		Vehiculo vehiculo;
+public final class MapeoVehiculo {
+
+	private MapeoVehiculo() {
 		
-		if(entidadVehiculo != null) {
-			vehiculo = null;
-		}
-		else {
-			vehiculo = new Vehiculo(entidadVehiculo.getId(),entidadVehiculo.getTipoVehiculo(),entidadVehiculo.getPlaca()
-                    ,entidadVehiculo.getCilindraje(), entidadVehiculo.getFechaIngreso(), entidadVehiculo.getFechaSalida()
-                    ,entidadVehiculo.getValor());
-		}
+	}
+	
+	private static final MapeoVehiculo INSTANCIA = new MapeoVehiculo(); 
+
+
+	public static MapeoVehiculo getInstance() {
+		
+		return INSTANCIA;
+	}
+	
+	
+	public Vehiculo convertirADominio(EntidadVehiculo entidadVehiculo) {
+		Vehiculo vehiculo = new Vehiculo();
+		vehiculo.setId(entidadVehiculo.getId());
+		vehiculo.setTipoVehiculo(entidadVehiculo.getTipoVehiculo());
+		vehiculo.setPlaca(entidadVehiculo.getPlaca());
+		vehiculo.setCilindraje(entidadVehiculo.getCilindraje());
+		vehiculo.setFechaIngreso(entidadVehiculo.getFechaIngreso());
+		vehiculo.setFechaSalida(entidadVehiculo.getFechaSalida());
+		vehiculo.setPrecio(entidadVehiculo.getPrecio());
+		vehiculo.setEstado(entidadVehiculo.isEstado());
 		return vehiculo;
 	}
 
 	public EntidadVehiculo convertirAEntidad(Vehiculo vehiculo) {
-		EntidadVehiculo entidadVehiculo;
-		
-		if(vehiculo == null) {
-			entidadVehiculo = null;
-		}
-		else {
-			entidadVehiculo = new EntidadVehiculo(vehiculo.getId(),vehiculo.getTipoVehiculo(),vehiculo.getPlaca()
-					,vehiculo.getCilindraje(),vehiculo.getFechaIngreso(),vehiculo.getFechaSalida(),vehiculo.getValor());
-		}
+		EntidadVehiculo entidadVehiculo = new EntidadVehiculo();	
+		entidadVehiculo.setId(vehiculo.getId());
+		entidadVehiculo.setTipoVehiculo(vehiculo.getTipoVehiculo());
+		entidadVehiculo.setPlaca(vehiculo.getPlaca());
+		entidadVehiculo.setCilindraje(vehiculo.getCilindraje());
+		entidadVehiculo.setFechaIngreso(vehiculo.getFechaIngreso());
+		entidadVehiculo.setFechaSalida(vehiculo.getFechaSalida());
+		entidadVehiculo.setPrecio(vehiculo.getPrecio());
+		entidadVehiculo.setEstado(vehiculo.isEstado());
 		return entidadVehiculo;
-	}
-
-	public List<Vehiculo> listarConvertirADominio(List<EntidadVehiculo> listarEntidadVehiculo) {
-		final List<Vehiculo> listarVehiculo = new ArrayList<>();
+	}	
 		
-		listarEntidadVehiculo.forEach(entidadVehiculo -> listarVehiculo.add(new Vehiculo(entidadVehiculo.getId()
-				,entidadVehiculo.getTipoVehiculo(),entidadVehiculo.getPlaca()
-				,entidadVehiculo.getCilindraje(),entidadVehiculo.getFechaIngreso(),entidadVehiculo.getFechaSalida()
-				,entidadVehiculo.getValor())));
-		return listarVehiculo;
-	}
-	
-	
 	
 	
 }

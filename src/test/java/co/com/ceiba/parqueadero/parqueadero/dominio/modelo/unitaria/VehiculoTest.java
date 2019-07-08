@@ -1,172 +1,55 @@
 package co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria;
 
+import static org.junit.Assert.assertNotNull;
+
+import java.util.Calendar;
+import java.util.Date;
+
 import org.junit.Test;
 
-
-import co.com.ceiba.parqueadero.parqueadero.dominio.BasePrueba;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCilindrajeIncorrecto;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCilindrajeRequerido;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionPlaca;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculo;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculoIncorrecto;
+import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.testdatabuilder.VehiculoTestDataBuilder;
 
 
 public class VehiculoTest {
 	
+	private VehiculoTestDataBuilder vehiculoTestDataBuilder;
+	private Vehiculo vehiculo;
+	private static final String TIPO_VEHICULO_CARRO = "CARRO";
+	private static final String TIPO_VEHICULO_MOTO = "MOTO";
+	private static final String PLACA_CARRO = "XDX068";
+	private static final String PLACA_MOTO = "XDX06C";
+	private static final String CILINDRAJE_CARRO = "";
+	private static final String CILINDRAJE_MOTO = "500";
+	private static final Date FECHA_INGRESO = Calendar.getInstance().getTime();	
+	private static final boolean ESTADO_REGISTRADO = true;
+		
+	
 	@Test
-	public void validarPlacaObligatorio() {
+	public void createVehiculoCarro() {
 		//Arrange
-		VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder();
-		vehiculoTestDataBuilder.conPlaca(null);
-		//Act - Assert
-		BasePrueba.assertThrows(() -> {
-			try {
-				return vehiculoTestDataBuilder.build();
-			} catch (ExcepcionPlaca e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionTipoVehiculo e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionCilindrajeIncorrecto e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionTipoVehiculoIncorrecto e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionCilindrajeRequerido e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return null;
-		},ExcepcionPlaca.class, "La placa es un dato obligatorio");
+		this.vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conTipoVehiculo(TIPO_VEHICULO_CARRO)
+				.conPlaca(PLACA_MOTO).conCilindraje(CILINDRAJE_MOTO).conFechaIngreso(FECHA_INGRESO)
+				.conEstado(ESTADO_REGISTRADO);
+		//Act
+		this.vehiculo = this.vehiculoTestDataBuilder.build();
+		//Assert
+		assertNotNull(vehiculo);
 	}
 	
 	@Test
-	public void validarTipoVehiculoObligatorio() {
+	public void createVehiculoMoto() {
 		//Arrange
-		VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder();
-		vehiculoTestDataBuilder.conTipoVehiculo(null);
-		//Act - Assert
-		BasePrueba.assertThrows(() -> {
-			try {
-				return vehiculoTestDataBuilder.build();
-			} catch (ExcepcionPlaca e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionTipoVehiculo e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionCilindrajeIncorrecto e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionTipoVehiculoIncorrecto e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionCilindrajeRequerido e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return null;
-		},ExcepcionTipoVehiculo.class, "El tipo vehículo es un dato obligatorio.");
+				this.vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conTipoVehiculo(TIPO_VEHICULO_MOTO)
+						.conPlaca(PLACA_CARRO).conCilindraje(CILINDRAJE_CARRO).conFechaIngreso(FECHA_INGRESO)
+						.conEstado(ESTADO_REGISTRADO);
+				//Act
+				this.vehiculo = this.vehiculoTestDataBuilder.build();
+				//Assert
+				assertNotNull(vehiculo);
 	}
 	
 	
-	 @Test
-	 public void validarTipoVehiculoIncorrecto() {
-	    //Arrange
-		VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder();
-		vehiculoTestDataBuilder.conTipoVehiculo("AUTO");
-
-	    //Act - Assert
-		BasePrueba.assertThrows(() -> {
-			try {
-				return vehiculoTestDataBuilder.build();
-			} catch (ExcepcionPlaca e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionTipoVehiculo e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionCilindrajeIncorrecto e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionTipoVehiculoIncorrecto e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionCilindrajeRequerido e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return null;
-		},ExcepcionTipoVehiculoIncorrecto.class,"El campo tipo vehículo (AUTO) no es valido para el sistema.");
-	    }
 	
-	 
-		 
-	  @Test
-	  public void  validarCilindrajeRequerido() {
-	     //Arrange
-		 VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder();
-		 vehiculoTestDataBuilder.conTipoVehiculo("MOTO");
-		 vehiculoTestDataBuilder.conCilindraje(null);
-	   
-	     //Act - Assert
-		 BasePrueba.assertThrows(() -> {
-			try {
-				return vehiculoTestDataBuilder.build();
-			} catch (ExcepcionPlaca e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionTipoVehiculo e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionCilindrajeIncorrecto e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionTipoVehiculoIncorrecto e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionCilindrajeRequerido e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return null;
-		}, ExcepcionCilindrajeRequerido.class,"El campo cilindraje es un dato obligatorio para moto.");
-	    }
-	 
-	  @Test
-	  public void validarCilindrajeIncorrecto() {
-	     //Arrange
-		 VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder();
-		 vehiculoTestDataBuilder.conTipoVehiculo("MOTO");
-		 vehiculoTestDataBuilder.conCilindraje("cien");
-
-	     //Act - Assert
-		 BasePrueba.assertThrows(() -> {
-			try {
-				return vehiculoTestDataBuilder.build();
-			} catch (ExcepcionPlaca e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionTipoVehiculo e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionCilindrajeIncorrecto e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionTipoVehiculoIncorrecto e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExcepcionCilindrajeRequerido e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return null;
-		}, ExcepcionCilindrajeIncorrecto.class,"El campo cilindraje debe ser numérico.");
-	    }
-	
-	 
 	 	  
 }

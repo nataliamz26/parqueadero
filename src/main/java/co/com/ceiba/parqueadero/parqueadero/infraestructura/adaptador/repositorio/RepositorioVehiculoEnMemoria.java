@@ -2,84 +2,72 @@ package co.com.ceiba.parqueadero.parqueadero.infraestructura.adaptador.repositor
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.consulta.ConsultarVehiculoActivo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.repositorio.RepositorioVehiculo;
 import co.com.ceiba.parqueadero.parqueadero.infraestructura.mapeo.MapeoVehiculo;
 import co.com.ceiba.parqueadero.parqueadero.infraestructura.modelo.EntidadVehiculo;
 
-@Repository
+@Component
 public class RepositorioVehiculoEnMemoria implements RepositorioVehiculo {
 
-	private IRepositorioVehiculoJPA repositorioVehiculoJPA;
-	private MapeoVehiculo mapeoVehiclo; 
-	
-	public RepositorioVehiculoEnMemoria(IRepositorioVehiculoJPA repositorioVehiculoJPA, MapeoVehiculo mapeoVehiclo) {
-		this.repositorioVehiculoJPA = repositorioVehiculoJPA;
-        this.mapeoVehiclo = mapeoVehiclo;
-	}
+	private static final MapeoVehiculo mapeoVehiculo = MapeoVehiculo.getInstance();
 	
 
+	@Autowired
+	private RepositorioVehiculoJPA jpa;
 	
 	@Override
-	public void almacenarCarro(Vehiculo registroVehiculo) {
-	
+	public Vehiculo registroIngresoVehiculo(Vehiculo vehiculo) {
+		EntidadVehiculo entidadVehiculo = mapeoVehiculo.convertirAEntidad(vehiculo);
+		return mapeoVehiculo.convertirADominio(jpa.save(entidadVehiculo));
 	}
-
+		
+	@Override
+	public List<ConsultarVehiculoActivo> consultarVehiculo() {
+		return jpa.vehiculoActivo();
+	}
+	
 	
 	@Override
-	public void almacenarMoto(Vehiculo registroVehiculo) {
+	public boolean registroSalidaVehiculo(Vehiculo vehiculo) {
+		EntidadVehiculo entidadVehiculo = mapeoVehiculo.convertirAEntidad(vehiculo);
+		return jpa.save(entidadVehiculo) != null;
 		
 	}
 
-	@Override
-	public void crear(Vehiculo vehiculo) {
-		EntidadVehiculo entidadVehiculo = repositorioVehiculoJPA.save(mapeoVehiclo.convertirAEntidad(vehiculo));
-        this.mapeoVehiclo.convertirADominio(entidadVehiculo);
-		
-	}
 
 	@Override
-	public void actualizar(Vehiculo vehiculo) {
-		EntidadVehiculo entidadVehiculo = repositorioVehiculoJPA.save(mapeoVehiclo.convertirAEntidad(vehiculo));
-	     this.mapeoVehiclo.convertirADominio(entidadVehiculo);
-		
+	public boolean validarSalidaVehiculo(String placa) {
+		EntidadVehiculo entidadVehiculo = jpa.findByPlaca(placa);
+		return entidadVehiculo !=null;
 	}
+	
+			
+	@Override
+	public Vehiculo retornoSalidaVehiculo(String placa) {
+		EntidadVehiculo entidadVehiculo = jpa.findByPlaca(placa);
+		return mapeoVehiculo.convertirADominio(entidadVehiculo);
+	}
+	
+	
 
 	@Override
-	public List<Vehiculo> listar() {
-		 final List<EntidadVehiculo> listarEntidadVehiculo = repositorioVehiculoJPA.listAll();
-	     return mapeoVehiclo.listarConvertirADominio(listarEntidadVehiculo);
-		
+	public int contarCarro() {
+		return jpa.contarCarro();
 	}
 
-	@Override
-	public int contarTipoVehiculo(String tipoVehiculo) {
-		return repositorioVehiculoJPA.contarTipoVehiculo(tipoVehiculo);
-	}
 
 	@Override
-	public Vehiculo findByPlaca(String placa) {
-		EntidadVehiculo entidadVehiculo = repositorioVehiculoJPA.findByPlaca(placa);
-        return mapeoVehiclo.convertirADominio(entidadVehiculo);
+	public int contarMoto() {
+		return jpa.contarCarro();
 	}
+	
+	
+	
 
-	@Override
-	public boolean existe(Vehiculo vehiculo) {
-		return repositorioVehiculoJPA.existe(vehiculo.getPlaca());
-	}
-
-	@Override
-	public int contarCarro(String TipoVehiculo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int contarMoto(String TipoVehiculo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 }

@@ -3,9 +3,10 @@ package co.com.ceiba.parqueadero.parqueadero.infraestructura.configuracion;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.manejador.ManejadorCrearVehiculo;
-import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.manejador.ManejadorListarVehiculo;
+
 import co.com.ceiba.parqueadero.parqueadero.dominio.repositorio.RepositorioVehiculo;
+import co.com.ceiba.parqueadero.parqueadero.dominio.servicio.ServicioActualizarVehiculo;
+import co.com.ceiba.parqueadero.parqueadero.dominio.servicio.ServicioConsultarVehiculo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.servicio.ServicioCrearVehiculo;
 
 
@@ -13,18 +14,18 @@ import co.com.ceiba.parqueadero.parqueadero.dominio.servicio.ServicioCrearVehicu
 public class BeanServicio {
 	
 	@Bean
-	public ServicioCrearVehiculo servicioCrearVehiculo(RepositorioVehiculo repositorioVehiculo) {
+	public ServicioCrearVehiculo servicioCrearUsuario(RepositorioVehiculo repositorioVehiculo) {
 		return new ServicioCrearVehiculo(repositorioVehiculo);
 	}
 
 	@Bean
-	public ManejadorCrearVehiculo manejadorCrearVehiculo(ServicioCrearVehiculo servicioCrearVehiculo) {
-		return new ManejadorCrearVehiculo(servicioCrearVehiculo);
+	public ServicioActualizarVehiculo servicioEliminarUsuario(RepositorioVehiculo repositorioVehiculo) {
+		return new ServicioActualizarVehiculo(repositorioVehiculo);
 	}
 
 	@Bean
-	public ManejadorListarVehiculo manejadorListarVehiculo(RepositorioVehiculo repositorioVehiculo) {
-		return new ManejadorListarVehiculo(repositorioVehiculo);
+	public ServicioConsultarVehiculo servicioActualizarUsuario(RepositorioVehiculo repositorioVehiculo) {
+		return new ServicioConsultarVehiculo(repositorioVehiculo);
 	}
 	
 }

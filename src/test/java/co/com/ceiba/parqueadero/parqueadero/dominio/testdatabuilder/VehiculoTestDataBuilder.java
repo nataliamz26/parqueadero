@@ -2,41 +2,29 @@ package co.com.ceiba.parqueadero.parqueadero.dominio.testdatabuilder;
 
 import java.util.Date;
 
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCilindrajeIncorrecto;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCilindrajeRequerido;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionPlaca;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculo;
+
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculoIncorrecto;
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
 
 
 public class VehiculoTestDataBuilder {
 
-	private Integer id;
+	private long id;
 	private String tipoVehiculo;
 	private String placa;
 	private String cilindraje;
 	private Date  fechaIngreso;
 	private Date fechaSalida;
-	private long valor;
+	private float precio;
+	private boolean estado;
+	
 	
 	
 	public VehiculoTestDataBuilder() {
 		
-		this.id = 1;
-		this.tipoVehiculo = "CARRO";
-		this.placa = "XDX123";
-		this.cilindraje = null;
-		this.fechaIngreso = new Date();
-		this.fechaSalida = null;
-		this.valor = 0;
 	}
-	
-	public VehiculoTestDataBuilder conId(Integer id) {
-		this.id = id;
-		return this;
-	}
-	
+		
+		
 	public VehiculoTestDataBuilder conTipoVehiculo(String tipoVehiculo) {
 		this.tipoVehiculo = tipoVehiculo;
 		return this;
@@ -62,13 +50,27 @@ public class VehiculoTestDataBuilder {
 		return this;
 	}
 	
-	public VehiculoTestDataBuilder conValor(Long valor) {
-		this.valor = valor;
+	public VehiculoTestDataBuilder conPrecio(float precio) {
+		this.precio = precio;
 		return this;
 	}
 	
-	public Vehiculo build() throws ExcepcionPlaca, ExcepcionTipoVehiculo, ExcepcionCilindrajeIncorrecto, ExcepcionTipoVehiculoIncorrecto, ExcepcionCilindrajeRequerido  {
-		return new Vehiculo(id, tipoVehiculo, placa, cilindraje, fechaIngreso, fechaSalida, valor);
+	public VehiculoTestDataBuilder conEstado(Boolean estado) {
+		this.estado = estado;
+		return this;
+	}
+	
+	public Vehiculo build() {
+		Vehiculo vehiculo = new Vehiculo();
+		vehiculo.setId(this.id);
+		vehiculo.setTipoVehiculo(this.tipoVehiculo);
+		vehiculo.setPlaca(this.placa);
+		vehiculo.setCilindraje(this.cilindraje);
+		vehiculo.setFechaIngreso(this.fechaIngreso);
+		vehiculo.setFechaSalida(this.fechaSalida);
+		vehiculo.setPrecio(this.precio);
+		vehiculo.setEstado(this.estado);
+		return vehiculo;
 	}
 	
 }
