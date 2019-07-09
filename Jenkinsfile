@@ -15,13 +15,14 @@ pipeline{
 		}
 	
 		options {
-			buildDiscarder(logRotator(numToKeepStr: '3'))
+			buildDiscarder(logRotator(numToKeepStr: '5'))
 			disableConcurrentBuilds()
 		}
 		
 		environment {
-        PROJECT_PATH_BACK = 'parqueadero'
+        PROJECT_PATH_BACK = './'
 		}
+		
 		parameters{
 			booleanParam defaultValue: false, description: 'Push a registry AWS', name: 'pushdeploy'
 		}
@@ -31,19 +32,10 @@ pipeline{
 			stage('Checkout') {
 				steps {
                 echo '------------>Checkout desde Git Microservicio<------------'
-                checkout([$class: 'GitSCM', 
-                branches: [[name: 'master']], 
-                doGenerateSubmoduleConfigurations: false, 
-                extensions: [[$class: 'RelativeTargetDirectory', 
-                relativeTargetDir: 'parqueadero']], 
-                gitTool: 'Git_Centos', 
-                submoduleCfg: [], 
-                userRemoteConfigs: [[credentialsId: 'GitHub_nataliamz26', 
-                url: 'https://github.com/nataliamz26/parqueadero.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'parqueadero']], gitTool: 'Git_Centos', submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GitHub_jehinerrodriguez', url: 'https://github.com/nataliamz26/parqueadero.git']]])
 				}
 			}
 		
-	
 		
 			stage('Compile'){
 				parallel {
@@ -58,9 +50,9 @@ pipeline{
 					}
 				}
 			}
-			stage('Unit Test - Cobertura'){
+			stage('Test Unitarios -Cobertura'){
 				parallel {
-					stage('Test - Cobertura backend'){
+					stage('Test- Cobertura backend'){
 						steps {
 							echo '------------>test backend<------------'
 							dir("${PROJECT_PATH_BACK}"){
@@ -81,16 +73,9 @@ pipeline{
 				}
 			}
 		
-		}
 		
-		stage('Build') {
-			step{
-				echo "------------->Build<-------------------"
-				//Construir sin tarea test que se ejecutó previamente
-				sh 'gradle --b ./build.gradle build -x test'
-			}
+
 		}
-		
 		post {
 			failure {
 				mail(to: 'natalia.munoz@ceiba.com.co',
@@ -99,9 +84,4 @@ pipeline{
 			}
 		}	
 			
-			
-		Success {
-			echo  'This will run only if successful'
-			junit '**/build/test-results/test/*.xml'
-		}	
 }
