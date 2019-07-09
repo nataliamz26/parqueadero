@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCupoParquederoLleno;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionPlacaConLetraA;
+import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionVehiculoNoPuedeIngresar;
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculoIncorrecto;
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionValidadorArgumento;
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionVehiculoExiste;
@@ -29,7 +29,7 @@ public class ManejadorError extends ResponseEntityExceptionHandler  {
 	public ManejadorError() {
 		CODIGOS_ESTADO.put(ExcepcionValidadorArgumento.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
 		CODIGOS_ESTADO.put(ExcepcionCupoParquederoLleno.class.getSimpleName(), HttpStatus.FORBIDDEN.value());
-		CODIGOS_ESTADO.put(ExcepcionPlacaConLetraA.class.getSimpleName(), HttpStatus.NOT_ACCEPTABLE.value());
+		CODIGOS_ESTADO.put(ExcepcionVehiculoNoPuedeIngresar.class.getSimpleName(), HttpStatus.NOT_ACCEPTABLE.value());
         CODIGOS_ESTADO.put(ExcepcionTipoVehiculoIncorrecto.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_ESTADO.put(ExcepcionVehiculoExiste.class.getSimpleName(), HttpStatus.NOT_ACCEPTABLE.value());
         CODIGOS_ESTADO.put(ExcepcionVehiculoNoExiste.class.getSimpleName(), HttpStatus.NOT_FOUND.value());

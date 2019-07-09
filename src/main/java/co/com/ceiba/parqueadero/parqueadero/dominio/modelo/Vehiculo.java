@@ -21,7 +21,7 @@ public class Vehiculo {
 	private float precio;
 	private boolean estado;
 	
-	public Vehiculo(String tipoVehiculo, String placa, String cilindraje, Date fechaIngreso, Boolean estado) {
+	public Vehiculo(String tipoVehiculo, String placa, String cilindraje, Date fechaIngreso) {
 		ValidadorArgumento.validarRequerido(placa, MENSAJE_PLACA_REQUERIDA);
         ValidadorArgumento.validarRequerido(tipoVehiculo, MENSAJE_TIPO_VEHICULO_REQUERIDO);
         ValidadorArgumento.validarFechaRequerida(fechaIngreso, MENSAJE_FECHA_ACTUAL_REQUERIDA );
@@ -42,9 +42,7 @@ public class Vehiculo {
 		
 	}
 
-	public Vehiculo(String placa, String tipoVehiculo, String cilindraje, Date time) {
 	
-	}
 
 	public long getId() {
 		return id;

@@ -12,7 +12,10 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
+import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCupoParquederoLleno;
+import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionVehiculoNoPuedeIngresar;
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionVehiculoExiste;
+import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionVehiculoNoExiste;
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.repositorio.RepositorioVehiculo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.servicio.ServicioCrearVehiculo;
@@ -32,7 +35,7 @@ public class ServicioCrearVehiculoTest {
 	private static final String EL_PARQUEADERO_NO_TIENE_CUPO_CARRO = "El Parqueadero no tiene cupo para carro";
 	private static final String EL_PARQUEADERO_NO_TIENE_CUPO_MOTO = "El Parqueadero no tiene cupo para moto";
 	private static final String CILINGRAJE = "300";
-	private static final String PLACA = "ADX068";
+	private static final String PLACA = "SDX068";
 	private static final String EL_VEHICULO_EXISTE = "El vehiculo se encuentra en el parqueadero";
 	private static final String EL_VEHICULO_NO_PUEDE_INGRESAR = "No está autorizado a ingresar, solo esta permitido el día Domingo y Lunes";
 	private static final String PRIMERA_LETRA_PLACA = "ADX068";
@@ -112,7 +115,7 @@ public class ServicioCrearVehiculoTest {
 	@Test
 	public void vehiculoExisteMoto() {
 		// arrange
-		this.vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(PLACA).conTipoVehiculo(TIPO_VEHICULO_CARRO)
+		this.vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(PLACA).conTipoVehiculo(TIPO_VEHICULO_MOTO)
 				.conCilindraje(CILINGRAJE).conFechaIngreso(hoy);
 		this.vehiculo = this.vehiculoTestDataBuilder.build();
 		when(this.repositorioVehiculo.validarSalidaVehiculo(PLACA)).thenReturn(true);
@@ -128,94 +131,123 @@ public class ServicioCrearVehiculoTest {
 	
 	
 	@Test
-	public void vehicleNotParking() {
+	public void vehiculoNoExisteCarro() {
 		// arrange
-		this.ticketBuilder = new TicketTestDatabuilder().whitLicensePlate(LICENSEPLATE).whitTypeVehicle(CARRO)
-				.whitEntry(today);
-		this.ticket = this.ticketBuilder.build();
-		when(this.parking.validateExits(LICENSEPLATE)).thenReturn(false);
-		this.service = new CreateTicketService(this.parking);
+		this.vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(PLACA).conTipoVehiculo(TIPO_VEHICULO_CARRO)
+				.conFechaIngreso(hoy);
+		this.vehiculo = this.vehiculoTestDataBuilder.build();
+		when(this.repositorioVehiculo.validarSalidaVehiculo(PLACA)).thenReturn(false);
+		this.servicioCrearVehiculo = new ServicioCrearVehiculo(this.repositorioVehiculo);
 		try {
 			// act
-			this.service.registerIncome(this.ticket);
-		} catch (VehicleInParkingException e) {
+			this.servicioCrearVehiculo.registroIngresoVehiculo(this.vehiculo);
+		} catch (ExcepcionVehiculoNoExiste e) {
+			
+			
 		}
 	}
 	
-
 	@Test
-	public void validateNotExits() {
+	public void vehiculoNoExisteMoto() {
 		// arrange
-		this.ticketBuilder = new TicketTestDatabuilder().whitLicensePlate(LICENSEPLATE).whitTypeVehicle(CARRO)
-				.whitEntry(today);
-		this.ticket = this.ticketBuilder.build();
-		when(this.parking.validateExits(LICENSEPLATE)).thenReturn(true);
-		assertEquals(this.parking.validateExits(LICENSEPLATE), true);
+		this.vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(PLACA).conTipoVehiculo(TIPO_VEHICULO_MOTO)
+				.conCilindraje(CILINGRAJE).conFechaIngreso(hoy);
+		this.vehiculo = this.vehiculoTestDataBuilder.build();
+		when(this.repositorioVehiculo.validarSalidaVehiculo(PLACA)).thenReturn(false);
+		this.servicioCrearVehiculo = new ServicioCrearVehiculo(this.repositorioVehiculo);
+		try {
+			// act
+			this.servicioCrearVehiculo.registroIngresoVehiculo(this.vehiculo);
+		} catch (ExcepcionVehiculoNoExiste e) {
+		}
+	}
+
+	
+	@Test
+	public void validarNoSalidaVehiculoCarro() {
+		// arrange
+		this.vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(PLACA).conTipoVehiculo(TIPO_VEHICULO_CARRO)
+				.conFechaIngreso(hoy);
+		this.vehiculo = this.vehiculoTestDataBuilder.build();
+		when(this.repositorioVehiculo.validarSalidaVehiculo(PLACA)).thenReturn(true);
+		assertEquals(this.repositorioVehiculo.validarSalidaVehiculo(PLACA), true);
 	}
 	
 	@Test
-	public void validateExits() {
+	public void validarNoSalidaVehiculoMoto() {
 		// arrange
-		this.ticketBuilder = new TicketTestDatabuilder().whitLicensePlate(LICENSEPLATE).whitTypeVehicle(CARRO);
-		this.ticket = this.ticketBuilder.build();
-		when(this.parking.validateExits(LICENSEPLATE)).thenReturn(false);
-		assertEquals(this.parking.validateExits(LICENSEPLATE), false);
+		this.vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(PLACA).conTipoVehiculo(TIPO_VEHICULO_MOTO)
+				.conCilindraje(CILINGRAJE).conFechaIngreso(hoy);
+		this.vehiculo = this.vehiculoTestDataBuilder.build();
+		when(this.repositorioVehiculo.validarSalidaVehiculo(PLACA)).thenReturn(true);
+		assertEquals(this.repositorioVehiculo.validarSalidaVehiculo(PLACA), true);
+	}
+	
+	@Test
+	public void validarSalidaVehiculo() {
+		// arrange
+		this.vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(PLACA).conTipoVehiculo(TIPO_VEHICULO_CARRO);
+		this.vehiculo = this.vehiculoTestDataBuilder.build();
+		when(this.repositorioVehiculo.validarSalidaVehiculo(PLACA)).thenReturn(false);
+		assertEquals(this.repositorioVehiculo.validarSalidaVehiculo(PLACA), false);
 	}
 
 
-
 	@Test
-	public void validateFullParkingMotorcycles() {
+	public void validarCupoParqueaderoCarro() {
 		// arrange
-		this.ticketBuilder = new TicketTestDatabuilder().whitDisplacement(DISPLACEMENT).whitLicensePlate(LICENSEPLATE)
-				.whitEntry(today).whitTypeVehicle(MOTO);
-		this.ticket = this.ticketBuilder.build();
-		when(this.parking.countActiveMotorcycles()).thenReturn(MAXIMUM_CAPACITY_OF_MOTORCYCLES);
-		this.service = new CreateTicketService(this.parking);
+		this.vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(PLACA).conTipoVehiculo(TIPO_VEHICULO_CARRO);
+		this.vehiculo = this.vehiculoTestDataBuilder.build();
+		when(this.repositorioVehiculo.contarCarro()).thenReturn(CAPACIDAD_MAXIMA_CARRO);
+		this.servicioCrearVehiculo = new ServicioCrearVehiculo(this.repositorioVehiculo);
 		try {
 			// act
-			this.service.registerIncome(this.ticket);
+			this.servicioCrearVehiculo.registroIngresoVehiculo(this.vehiculo);
 			fail();
-		} catch (FullParkingException e) {
+		} catch (ExcepcionCupoParquederoLleno e) {
 			// assert
-			assertEquals(e.getMessage(), FULL_PARKING_MOTORCYCLES);
+			assertEquals(e.getMessage(), EL_PARQUEADERO_NO_TIENE_CUPO_CARRO);
+		}
+	}
+	
+	
+	@Test
+	public void validarCupoParqueaderoMoto() {
+		// arrange
+		this.vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conPlaca(PLACA).conTipoVehiculo(TIPO_VEHICULO_MOTO)
+				.conCilindraje(CILINGRAJE).conFechaIngreso(hoy);
+		this.vehiculo = this.vehiculoTestDataBuilder.build();
+		when(this.repositorioVehiculo.contarMoto()).thenReturn(CAPACIDAD_MAXIMA_MOTO);
+		this.servicioCrearVehiculo = new ServicioCrearVehiculo(this.repositorioVehiculo);
+		try {
+			// act
+			this.servicioCrearVehiculo.registroIngresoVehiculo(this.vehiculo);
+			fail();
+		} catch (ExcepcionCupoParquederoLleno e) {
+			// assert
+			assertEquals(e.getMessage(), EL_PARQUEADERO_NO_TIENE_CUPO_MOTO);
 		}
 	}
 
-	@Test
-	public void validateFullParkingCars() {
-		// arrange
-		this.ticketBuilder = new TicketTestDatabuilder().whitLicensePlate(LICENSEPLATE).whitTypeVehicle(CARRO);
-		this.ticket = this.ticketBuilder.build();
-		when(this.parking.countActiveCars()).thenReturn(MAXIMUM_CAPACITY_OF_CARS);
-		this.service = new CreateTicketService(this.parking);
-		try {
-			// act
-			this.service.registerIncome(this.ticket);
-			fail();
-		} catch (FullParkingException e) {
-			// assert
-			assertEquals(e.getMessage(), FULL_PARKING_CARS);
-		}
-	}
+	
 
 	@Test
-	public void validateEntryOfVehycles() {
+	public void validarIngresoVehiculo() {
 		// arrange
-		Calendar ahoraCal = Calendar.getInstance();
-		ahoraCal.set(2019, 5, 26);
-		Date todayModify = ahoraCal.getTime();
-		this.ticketBuilder = new TicketTestDatabuilder().whitDisplacement(DISPLACEMENT)
-				.whitLicensePlate(LICENSEPLATE_INCOME_NOT_ALLOWED).whitEntry(todayModify).whitTypeVehicle(MOTO);
-		this.ticket = this.ticketBuilder.build();
-		this.service = new CreateTicketService(this.parking);
+		Calendar hoyCal = Calendar.getInstance();
+		hoyCal.set(2019, 7, 8);
+		Date hoyModificada = hoyCal.getTime();
+		this.vehiculoTestDataBuilder = new VehiculoTestDataBuilder().conCilindraje(CILINGRAJE)
+				.conPlaca(PRIMERA_LETRA_PLACA).conFechaIngreso(hoyModificada).conTipoVehiculo(TIPO_VEHICULO_MOTO);
+		this.vehiculo = this.vehiculoTestDataBuilder.build();
+		this.servicioCrearVehiculo = new ServicioCrearVehiculo(this.repositorioVehiculo);
 		try {
 			// act
-			this.service.registerIncome(this.ticket);
+			this.servicioCrearVehiculo.registroIngresoVehiculo(this.vehiculo);
 			fail();
-		} catch (IncomeNotAllowedException e) {
+		} catch (ExcepcionVehiculoNoPuedeIngresar e) {
 			// assert
-			assertEquals(e.getMessage(), INCOME_NOT_ALLOWED);
+			assertEquals(e.getMessage(), EL_VEHICULO_NO_PUEDE_INGRESAR);
 		}
 
 	}

@@ -6,7 +6,7 @@ public class Error {
 	private String mensaje;
 	
 	
-	public Error(String excepcionNombre, String mensaje) {
+	public Error(String nombreExcepcion, String mensaje) {
 		this.nombreExcepcion = nombreExcepcion;
 		this.mensaje = mensaje;
 	}

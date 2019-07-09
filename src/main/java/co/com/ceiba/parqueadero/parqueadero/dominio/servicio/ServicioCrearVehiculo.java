@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionCupoParquederoLleno;
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionPlacaConLetraA;
+import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionVehiculoNoPuedeIngresar;
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionVehiculoExiste;
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.repositorio.RepositorioVehiculo;
@@ -23,7 +23,7 @@ public class ServicioCrearVehiculo {
 	private static final String TIPO_VEHICULO_CARRO = "CARRO";
 	private static final String TIPO_VEHICULO_MOTO = "MOTO";
 
-	//Inyección de dependencias por constructor
+	
 	private RepositorioVehiculo repositorioVehiculo;
 	
 
@@ -63,7 +63,7 @@ public class ServicioCrearVehiculo {
 		hoy.setTimeInMillis(date.getTime());
 		int dia = hoy.get(Calendar.DAY_OF_WEEK);
 		if (placa.startsWith(PRIMERA_LETRA_PLACA) && (dia > Calendar.MONDAY)) {
-			throw new ExcepcionPlacaConLetraA(EL_VEHICULO_NO_PUEDE_INGRESAR);
+			throw new ExcepcionVehiculoNoPuedeIngresar(EL_VEHICULO_NO_PUEDE_INGRESAR);
 		}
 	}
 	

@@ -13,8 +13,8 @@ public class GenerarTiquete {
 
 
 	public Vehiculo crear(ComandoVehiculo comandoVehiculo) {
-		return new Vehiculo(comandoVehiculo.getPlaca(),
-				comandoVehiculo.getTipoVehiculo(),
+		return new Vehiculo(comandoVehiculo.getTipoVehiculo(),
+				comandoVehiculo.getPlaca(),
 				comandoVehiculo.getCilindraje(),
 				Calendar.getInstance().getTime());
 		

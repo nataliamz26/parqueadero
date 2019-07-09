@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiOperation;
 
 
 @RestController
-@RequestMapping("/vehiculo")
+@RequestMapping("/parqueadero")
 @Api(tags = { " Controlador vehiculo" })
 public class ControladorVehiculo {
 

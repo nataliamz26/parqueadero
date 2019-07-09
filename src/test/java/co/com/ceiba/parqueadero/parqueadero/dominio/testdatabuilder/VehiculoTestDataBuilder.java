@@ -3,7 +3,6 @@ package co.com.ceiba.parqueadero.parqueadero.dominio.testdatabuilder;
 import java.util.Date;
 
 
-import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculoIncorrecto;
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
 
 
