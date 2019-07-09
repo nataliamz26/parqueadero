@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioActualizarVehiculoTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-07-09T20:49:20" hostname="NATALIA-MUNOZ" time="0.467">
+  <properties/>
+  <testcase name="registroSalidaVehiculoMotoAltoCilingraje" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioActualizarVehiculoTest" time="0.463"/>
+  <testcase name="registroSalidaVehiculoMoto" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioActualizarVehiculoTest" time="0.001"/>
+  <testcase name="build" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioActualizarVehiculoTest" time="0.0"/>
+  <testcase name="registroSalidaVehiculoCarro" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioActualizarVehiculoTest" time="0.001"/>
+  <testcase name="vehicleInParking" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioActualizarVehiculoTest" time="0.0"/>
+  <testcase name="vehicleNotInParking" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioActualizarVehiculoTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
