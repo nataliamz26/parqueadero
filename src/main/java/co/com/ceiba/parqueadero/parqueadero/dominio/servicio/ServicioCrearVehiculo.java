@@ -32,8 +32,8 @@ public class ServicioCrearVehiculo {
 	}
 	
 	public Vehiculo registroIngresoVehiculo(Vehiculo vehiculo) {
-		validarRegistroVehiculo(vehiculo.getPlaca());
 		validarCupoParqueadero(vehiculo.getTipoVehiculo());
+		validarRegistroVehiculo(vehiculo.getPlaca());
 		validarIngresoVehiculo(vehiculo.getPlaca(),vehiculo.getFechaIngreso());
 		return this.repositorioVehiculo.registroIngresoVehiculo(vehiculo);
 	}

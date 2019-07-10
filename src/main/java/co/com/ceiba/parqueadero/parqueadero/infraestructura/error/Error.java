@@ -2,18 +2,18 @@ package co.com.ceiba.parqueadero.parqueadero.infraestructura.error;
 
 public class Error {
 
-	private String nombreExcepcion;
+	private String excepcionNombre;
 	private String mensaje;
 	
 	
-	public Error(String nombreExcepcion, String mensaje) {
-		this.nombreExcepcion = nombreExcepcion;
+	public Error(String excepcionNombre, String mensaje) {
+		this.excepcionNombre = excepcionNombre;
 		this.mensaje = mensaje;
 	}
 
 
-	public String getNombreExcepcion() {
-		return nombreExcepcion;
+	public String getExcepcionNombre() {
+		return excepcionNombre;
 	}
 
 
