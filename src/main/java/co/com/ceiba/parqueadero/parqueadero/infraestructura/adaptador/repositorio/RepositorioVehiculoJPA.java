@@ -16,7 +16,7 @@ public interface RepositorioVehiculoJPA extends CrudRepository<EntidadVehiculo, 
 	 @Query("SELECT v FROM EntidadVehiculo v WHERE v.estado = true AND v.placa = :placa")
 	 EntidadVehiculo findByPlaca(@Param("placa") String placa);
 
-	 @Query("SELECT new co.com.ceiba.parqueadero.parqueadero.aplicacion.consulta.ConsultarVehiculoActivo(v.placa,v.fechaIngreso,v.tipoVehiculo) FROM EntidadVehiculo v WHERE v.estado = true")
+	 @Query("SELECT new co.com.ceiba.parqueadero.parqueadero.aplicacion.consulta.ConsultarVehiculoActivo(v.tipoVehiculo, v.placa,v.cilindraje,v.fechaIngreso) FROM EntidadVehiculo v WHERE v.estado = true")
 	 List<ConsultarVehiculoActivo> vehiculoActivo();
 
 	 @Query("SELECT COUNT(*) FROM EntidadVehiculo v WHERE v.tipoVehiculo = 'CARRO' AND v.estado = true")
