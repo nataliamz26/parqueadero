@@ -15,12 +15,12 @@ public final class ComandoVehiculoMapeo {
 		return INSTANCIA;
 	}
 	
-	public ComandoVehiculo convertirAComando(Vehiculo entidadVehiculo) {
-		ComandoVehiculo vehiculo = new ComandoVehiculo();
-		vehiculo.setPlaca(entidadVehiculo.getPlaca());
-		vehiculo.setTipoVehiculo(entidadVehiculo.getTipoVehiculo());
-		vehiculo.setCilindraje(entidadVehiculo.getCilindraje());
-		return vehiculo;
+	public ComandoVehiculo convertirAComando(Vehiculo entidad) {
+		ComandoVehiculo dominio = new ComandoVehiculo();
+		dominio.setPlaca(entidad.getPlaca());
+		dominio.setTipoVehiculo(entidad.getTipoVehiculo());
+		dominio.setCilindraje(entidad.getCilindraje());
+		return dominio;
 	} 
 
 }

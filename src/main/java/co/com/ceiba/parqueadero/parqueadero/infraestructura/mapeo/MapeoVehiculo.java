@@ -21,30 +21,30 @@ public final class MapeoVehiculo {
 	}
 	
 	
-	public Vehiculo convertirADominio(EntidadVehiculo entidadVehiculo) {
-		Vehiculo vehiculo = new Vehiculo();
-		vehiculo.setId(entidadVehiculo.getId());
-		vehiculo.setTipoVehiculo(entidadVehiculo.getTipoVehiculo());
-		vehiculo.setPlaca(entidadVehiculo.getPlaca());
-		vehiculo.setCilindraje(entidadVehiculo.getCilindraje());
-		vehiculo.setFechaIngreso(entidadVehiculo.getFechaIngreso());
-		vehiculo.setFechaSalida(entidadVehiculo.getFechaSalida());
-		vehiculo.setPrecio(entidadVehiculo.getPrecio());
-		vehiculo.setEstado(entidadVehiculo.isEstado());
-		return vehiculo;
+	public Vehiculo convertirADominio(EntidadVehiculo entidad) {
+		Vehiculo dominio = new Vehiculo();
+		dominio.setId(entidad.getId());
+		dominio.setTipoVehiculo(entidad.getTipoVehiculo());
+		dominio.setPlaca(entidad.getPlaca());
+		dominio.setCilindraje(entidad.getCilindraje());
+		dominio.setFechaIngreso(entidad.getFechaIngreso());
+		dominio.setFechaSalida(entidad.getFechaSalida());
+		dominio.setPrecio(entidad.getPrecio());
+		dominio.setEstado(entidad.isEstado());
+		return dominio;
 	}
 
-	public EntidadVehiculo convertirAEntidad(Vehiculo vehiculo) {
-		EntidadVehiculo entidadVehiculo = new EntidadVehiculo();	
-		entidadVehiculo.setId(vehiculo.getId());
-		entidadVehiculo.setTipoVehiculo(vehiculo.getTipoVehiculo());
-		entidadVehiculo.setPlaca(vehiculo.getPlaca());
-		entidadVehiculo.setCilindraje(vehiculo.getCilindraje());
-		entidadVehiculo.setFechaIngreso(vehiculo.getFechaIngreso());
-		entidadVehiculo.setFechaSalida(vehiculo.getFechaSalida());
-		entidadVehiculo.setPrecio(vehiculo.getPrecio());
-		entidadVehiculo.setEstado(vehiculo.isEstado());
-		return entidadVehiculo;
+	public EntidadVehiculo convertirAEntidad(Vehiculo dominio) {
+		EntidadVehiculo entidad = new EntidadVehiculo();	
+		entidad.setId(dominio.getId());
+		entidad.setTipoVehiculo(dominio.getTipoVehiculo());
+		entidad.setPlaca(dominio.getPlaca());
+		entidad.setCilindraje(dominio.getCilindraje());
+		entidad.setFechaIngreso(dominio.getFechaIngreso());
+		entidad.setFechaSalida(dominio.getFechaSalida());
+		entidad.setPrecio(dominio.getPrecio());
+		entidad.setEstado(dominio.isEstado());
+		return entidad;
 	}	
 		
 	

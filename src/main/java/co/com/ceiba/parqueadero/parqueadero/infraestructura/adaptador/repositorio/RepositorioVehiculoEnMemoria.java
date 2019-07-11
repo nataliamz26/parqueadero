@@ -22,8 +22,8 @@ public class RepositorioVehiculoEnMemoria implements RepositorioVehiculo {
 	
 	@Override
 	public Vehiculo registroIngresoVehiculo(Vehiculo vehiculo) {
-		EntidadVehiculo entidadVehiculo = mapeoVehiculo.convertirAEntidad(vehiculo);
-		return mapeoVehiculo.convertirADominio(jpa.save(entidadVehiculo));
+		EntidadVehiculo entidad = mapeoVehiculo.convertirAEntidad(vehiculo);
+		return mapeoVehiculo.convertirADominio(jpa.save(entidad));
 	}
 		
 	@Override
@@ -34,23 +34,23 @@ public class RepositorioVehiculoEnMemoria implements RepositorioVehiculo {
 	
 	@Override
 	public boolean registroSalidaVehiculo(Vehiculo vehiculo) {
-		EntidadVehiculo entidadVehiculo = mapeoVehiculo.convertirAEntidad(vehiculo);
-		return jpa.save(entidadVehiculo) != null;
+		EntidadVehiculo entidad = mapeoVehiculo.convertirAEntidad(vehiculo);
+		return jpa.save(entidad) != null;
 		
 	}
 
 
 	@Override
 	public boolean validarSalidaVehiculo(String placa) {
-		EntidadVehiculo entidadVehiculo = jpa.findByPlaca(placa);
-		return entidadVehiculo !=null;
+		EntidadVehiculo entidad = jpa.findByPlaca(placa);
+		return entidad !=null;
 	}
 	
 			
 	@Override
 	public Vehiculo retornoSalidaVehiculo(String placa) {
-		EntidadVehiculo entidadVehiculo = jpa.findByPlaca(placa);
-		return mapeoVehiculo.convertirADominio(entidadVehiculo);
+		EntidadVehiculo entidad = jpa.findByPlaca(placa);
+		return mapeoVehiculo.convertirADominio(entidad);
 	}
 	
 	

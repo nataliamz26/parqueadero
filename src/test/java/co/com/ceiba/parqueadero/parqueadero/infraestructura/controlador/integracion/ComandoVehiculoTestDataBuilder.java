@@ -32,11 +32,11 @@ public class ComandoVehiculoTestDataBuilder {
 	
 
 	public ComandoVehiculo build() {
-		ComandoVehiculo vehiculo = new ComandoVehiculo();
-		vehiculo.setTipoVehiculo(this.tipoVehiculo);
-		vehiculo.setPlaca(this.placa);
-		vehiculo.setCilindraje(this.cilindraje);
-		return vehiculo;
+		ComandoVehiculo comandoVehiculo = new ComandoVehiculo();
+		comandoVehiculo.setTipoVehiculo(this.tipoVehiculo);
+		comandoVehiculo.setPlaca(this.placa);
+		comandoVehiculo.setCilindraje(this.cilindraje);
+		return comandoVehiculo;
 	}
 	
 }
