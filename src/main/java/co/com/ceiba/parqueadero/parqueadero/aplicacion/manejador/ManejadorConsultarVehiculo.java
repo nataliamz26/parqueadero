@@ -1,9 +1,10 @@
-package co.com.ceiba.parqueadero.parqueadero.aplicacion.consulta;
+package co.com.ceiba.parqueadero.parqueadero.aplicacion.manejador;
 
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.consulta.ConsultarVehiculoActivo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.servicio.ServicioConsultarVehiculo;
 
 @Component

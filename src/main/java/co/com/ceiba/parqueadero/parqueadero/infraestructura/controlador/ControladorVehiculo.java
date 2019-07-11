@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.ComandoResultado;
-import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.manejador.ComandoVehiculo;
-import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.manejador.ManejadorActualizarVehiculo;
-import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.manejador.ManejadorCrearVehiculo;
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.ComandoVehiculo;
 import co.com.ceiba.parqueadero.parqueadero.aplicacion.consulta.ConsultarVehiculoActivo;
-import co.com.ceiba.parqueadero.parqueadero.aplicacion.consulta.ManejadorConsultarVehiculo;
-
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.manejador.ManejadorActualizarVehiculo;
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.manejador.ManejadorConsultarVehiculo;
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.manejador.ManejadorCrearVehiculo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 

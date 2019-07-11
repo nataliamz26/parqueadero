@@ -23,7 +23,7 @@ import org.springframework.web.context.WebApplicationContext;
 import co.com.ceiba.parqueadero.parqueadero.ApplicationMock;
 import co.com.ceiba.parqueadero.parqueadero.ParqueaderoApplication;
 import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.ComandoResultado;
-import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.manejador.ComandoVehiculo;
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.ComandoVehiculo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionVehiculoNoPuedeIngresar;
 
 @RunWith(SpringRunner.class)

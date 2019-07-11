@@ -1,6 +1,6 @@
 package co.com.ceiba.parqueadero.parqueadero.infraestructura.controlador.integracion;
 
-import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.manejador.ComandoVehiculo;
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.ComandoVehiculo;
 
 public class ComandoVehiculoTestDataBuilder {
 

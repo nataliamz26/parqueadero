@@ -1,4 +1,4 @@
-package co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.manejador;
+package co.com.ceiba.parqueadero.parqueadero.aplicacion.manejador;
 
 import org.springframework.stereotype.Component;
 

@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import org.springframework.stereotype.Component;
 
-import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.manejador.ComandoVehiculo;
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.ComandoVehiculo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
 
 @Component

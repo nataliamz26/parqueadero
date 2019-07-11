@@ -1,4 +1,4 @@
-package co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.manejador;
+package co.com.ceiba.parqueadero.parqueadero.aplicacion.comando;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

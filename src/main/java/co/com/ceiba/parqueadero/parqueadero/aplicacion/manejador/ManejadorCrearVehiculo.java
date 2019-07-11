@@ -1,9 +1,10 @@
-package co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.manejador;
+package co.com.ceiba.parqueadero.parqueadero.aplicacion.manejador;
 
 import org.springframework.stereotype.Component;
 
 import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.ComandoManejadorResultado;
 import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.ComandoResultado;
+import co.com.ceiba.parqueadero.parqueadero.aplicacion.comando.ComandoVehiculo;
 import co.com.ceiba.parqueadero.parqueadero.aplicacion.generacion.GenerarTiquete;
 import co.com.ceiba.parqueadero.parqueadero.aplicacion.mapeo.ComandoVehiculoMapeo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.modelo.Vehiculo;
