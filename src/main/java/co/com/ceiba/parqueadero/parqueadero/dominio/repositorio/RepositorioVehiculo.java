@@ -23,7 +23,7 @@ public interface RepositorioVehiculo {
      public List<ConsultarVehiculoActivo> consultarVehiculo();
 
      /**
- 	 * Método que registra la finalizaión de un ticket
+ 	 * Metodo que registra la finalizalion de un ticket
  	 * 
  	 * @param ticket a finalizar
  	 * @return boolean con true si se finalizo correctamente y false si no
@@ -31,7 +31,7 @@ public interface RepositorioVehiculo {
  	public boolean registroSalidaVehiculo(Vehiculo vehiculo);
 
       /**
-      * Método que valida si un vehiculo ya se encuentra en el parqueadero
+      * Metodo que valida si un vehiculo ya se encuentra en el parqueadero
       * 
       * @param placa de vehiculo a verificar
       * @return boolean con la respuesta si se encontro el vehiculo en el parqueadero
@@ -41,7 +41,7 @@ public interface RepositorioVehiculo {
 	
 		
 	/**
-	 * Método que retorna un vehiculo del parqueadero que aun no ha salido
+	 * Metodo que retorna un vehiculo del parqueadero que aun no ha salido
 	 * 
 	 * @param placa de vehiculo a verificar
 	 * @return ticket con la respuesta si se encontro el vehiculo con ticket activo
