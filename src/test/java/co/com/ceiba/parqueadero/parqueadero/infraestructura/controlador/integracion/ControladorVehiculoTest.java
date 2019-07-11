@@ -70,18 +70,18 @@ public class ControladorVehiculoTest {
 	/*
 	 * @Test public void registrarIngresoCarro() throws Exception {
 	 * ComandoVehiculoTestDataBuilder comandoVehiculoTestDataBuilder = new
-	 * ComandoVehiculoTestDataBuilder().conPlaca(PLACA_CARRO).conTipoVehiculo(
-	 * TIPO_VEHICULO_CARRO); ComandoVehiculo comandoVehiculo =
-	 * comandoVehiculoTestDataBuilder.build(); JSONObject jsonComandoVehiculo = new
-	 * JSONObject(comandoVehiculo); ComandoResultado<ComandoVehiculo>
-	 * comandoResultado = new ComandoResultado<>(comandoVehiculo); JSONObject
-	 * jsonTicketComandoResultado = new JSONObject(comandoResultado);
+	 * ComandoVehiculoTestDataBuilder()
+	 * .conPlaca(PLACA_CARRO).conTipoVehiculo(TIPO_VEHICULO_CARRO); ComandoVehiculo
+	 * comandoVehiculo = comandoVehiculoTestDataBuilder.build(); JSONObject
+	 * jsonComandoVehiculo = new JSONObject(comandoVehiculo);
+	 * ComandoResultado<ComandoVehiculo> comandoResultado = new
+	 * ComandoResultado<>(comandoVehiculo); JSONObject jsonTicketComandoResultado =
+	 * new JSONObject(comandoResultado);
 	 * mvc.perform(post(URL_VEHICULO).content(jsonComandoVehiculo.toString()).
 	 * contentType(MediaType.APPLICATION_JSON))
 	 * .andExpect(status().isOk()).andExpect(content().json(
 	 * jsonTicketComandoResultado.toString())); }
 	 */
-	 
 
 	@Test
 	public void getVehiculoActivo() throws Exception {
@@ -102,20 +102,17 @@ public class ControladorVehiculoTest {
 	}
 	
 	
-	/*
-	 * @Test public void registrarSalidaMoto() throws Exception {
-	 * ComandoVehiculoTestDataBuilder comandoVehiculoTestDataBuilder = new
-	 * ComandoVehiculoTestDataBuilder().conPlaca(PLACA_MOTO); ComandoVehiculo
-	 * comandoVehiculo = comandoVehiculoTestDataBuilder.build(); JSONObject
-	 * jsonComandoVehiculo = new JSONObject(comandoVehiculo);
-	 * ComandoResultado<Float> salidaResultado = new
-	 * ComandoResultado<>(PRECIO_HORA_MOTO); JSONObject comandoResultado = new
-	 * JSONObject(salidaResultado);
-	 * mvc.perform(put(URL_VEHICULO).content(jsonComandoVehiculo.toString()).
-	 * contentType(MediaType.APPLICATION_JSON))
-	 * .andExpect(status().isOk()).andExpect((content().json(comandoResultado.
-	 * toString()))); }
-	 */
+	  @Test public void registrarSalidaMoto() throws Exception {
+		  ComandoVehiculoTestDataBuilder comandoVehiculoTestDataBuilder = new ComandoVehiculoTestDataBuilder().conPlaca(PLACA_MOTO); ComandoVehiculo
+		  comandoVehiculo = comandoVehiculoTestDataBuilder.build(); 
+		  JSONObject jsonComandoVehiculo = new JSONObject(comandoVehiculo);
+		  ComandoResultado<Float> salidaResultado = new
+	  ComandoResultado<>(PRECIO_HORA_MOTO); JSONObject comandoResultado = new
+	  JSONObject(salidaResultado);
+	  mvc.perform(put(URL_VEHICULO).content(jsonComandoVehiculo.toString()).
+	  contentType(MediaType.APPLICATION_JSON))
+	  .andExpect(status().isOk()).andExpect((content().json(comandoResultado.
+	  toString()))); }
 	 
 
 	@Test

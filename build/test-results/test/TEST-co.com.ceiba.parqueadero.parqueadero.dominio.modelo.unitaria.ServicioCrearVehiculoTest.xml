@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2019-07-09T21:47:36" hostname="NATALIA-MUNOZ" time="0.014">
+<testsuite name="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2019-07-11T13:22:05" hostname="NATALIA-MUNOZ" time="0.019">
   <properties/>
-  <testcase name="validarNoSalidaVehiculoCarro" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.001"/>
+  <testcase name="validarNoSalidaVehiculoCarro" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.0"/>
   <testcase name="vehiculoExisteMoto" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.001"/>
   <testcase name="validarCupoParqueaderoCarro" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.001"/>
   <testcase name="validarNoSalidaVehiculoMoto" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.001"/>
   <testcase name="validarSalidaVehiculo" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.001"/>
-  <testcase name="validarIngresoVehiculo" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.001"/>
-  <testcase name="build" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.0"/>
+  <testcase name="validarIngresoVehiculo" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.0"/>
+  <testcase name="build" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.001"/>
   <testcase name="validarCupoParqueaderoMoto" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.001"/>
-  <testcase name="vehiculoNoExisteMoto" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.0"/>
-  <testcase name="vehiculoNoExisteCarro" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.001"/>
-  <testcase name="crearVehiculoCarro" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.002"/>
+  <testcase name="vehiculoNoExisteMoto" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.001"/>
+  <testcase name="vehiculoNoExisteCarro" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.003"/>
+  <testcase name="crearVehiculoCarro" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.001"/>
   <testcase name="vehiculoExisteCarro" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.001"/>
-  <testcase name="crearVehiculoMoto" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.001"/>
+  <testcase name="crearVehiculoMoto" classname="co.com.ceiba.parqueadero.parqueadero.dominio.modelo.unitaria.ServicioCrearVehiculoTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
