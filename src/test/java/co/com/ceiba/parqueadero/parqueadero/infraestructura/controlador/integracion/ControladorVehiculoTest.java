@@ -61,9 +61,9 @@ public class ControladorVehiculoTest {
 		ComandoVehiculo comandoVehiculo = comandoVehiculoTestDataBuilder.build();
 		JSONObject jsonComandoVehiculo = new JSONObject(comandoVehiculo);
 		ComandoResultado<ComandoVehiculo> comandoResultado = new ComandoResultado<>(comandoVehiculo);
-		JSONObject jsonTicketComandoResultado = new JSONObject(comandoResultado);
+		JSONObject jsonVehiculoComandoResultado = new JSONObject(comandoResultado);
 		mvc.perform(post(URL_VEHICULO).content(jsonComandoVehiculo.toString()).contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk()).andExpect(content().json(jsonTicketComandoResultado.toString()));
+				.andExpect(status().isOk()).andExpect(content().json(jsonVehiculoComandoResultado.toString()));
 	}
 
 	
@@ -75,12 +75,12 @@ public class ControladorVehiculoTest {
 	 * comandoVehiculo = comandoVehiculoTestDataBuilder.build(); JSONObject
 	 * jsonComandoVehiculo = new JSONObject(comandoVehiculo);
 	 * ComandoResultado<ComandoVehiculo> comandoResultado = new
-	 * ComandoResultado<>(comandoVehiculo); JSONObject jsonTicketComandoResultado =
+	 * ComandoResultado<>(comandoVehiculo); JSONObject jsonVehiculoComandoResultado =
 	 * new JSONObject(comandoResultado);
 	 * mvc.perform(post(URL_VEHICULO).content(jsonComandoVehiculo.toString()).
 	 * contentType(MediaType.APPLICATION_JSON))
 	 * .andExpect(status().isOk()).andExpect(content().json(
-	 * jsonTicketComandoResultado.toString())); }
+	 * jsonVehiculoComandoResultado.toString())); }
 	 */
 
 	@Test
