@@ -3,7 +3,7 @@ package co.com.ceiba.parqueadero.parqueadero.dominio.modelo;
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionTipoVehiculoIncorrecto;
 import co.com.ceiba.parqueadero.parqueadero.dominio.excepcion.ExcepcionValidadorArgumento;
 
-public class ValidadorArgumento {
+public final class ValidadorArgumento {
 	
 	 private static final String CAMPO_VACIO = "";
 	 private static final String TIPO_VEHICULO_CARRO = "CARRO";
